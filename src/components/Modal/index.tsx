@@ -143,7 +143,8 @@ const StoryModal = forwardRef<StoryModalPublicMethods, StoryModalProps>( ( {
     const userStories = stories[newUserIndex]?.stories;
     const newStory = newStoryIndex !== undefined
       ? userStories?.[newStoryIndex + 1]?.id ?? userStories?.[0]?.id : undefined;
-    currentStory.value = newStory;
+    if(newStory)
+      currentStory.value=newStory
 
     if ( onStoryStart ) {
 
