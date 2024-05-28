@@ -99,6 +99,8 @@ export interface StoryProgressProps {
   length: number;
   progressActiveColor?: string;
   progressColor?: string;
+  progressPaddingHorizontal?:number;
+  progressGap?:number;
   progressContainerStyle?: ViewStyle;
 }
 
@@ -140,6 +142,8 @@ export interface StoryListProps extends InstagramStoryProps, StoryHeaderProps {
   videoProps?: any;
   progressActiveColor?: string;
   progressColor?: string;
+  progressPaddingHorizontal?:number;
+  progressGap?:number;
   mediaContainerStyle?: ViewStyle;
   imageStyles?: ImageStyle;
   imageProps?: ImageProps;

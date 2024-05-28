@@ -55,8 +55,8 @@ export interface InstagramStoriesProps {
   closeIconColor?: string;
   progressActiveColor?: string;
   progressColor?: string;
-  progressGap?:string;
-  progressPaddingHorizontal?:string;
+  progressGap?:number;
+  progressPaddingHorizontal?:number;
   modalAnimationDuration?: number;
   storyAnimationDuration?: number;
   mediaContainerStyle?: ViewStyle;
