@@ -7,12 +7,12 @@ import { StoryProgressProps } from '../../core/dto/componentsDTO';
 
 const Progress: FC<StoryProgressProps> = ( {
   progress, active, activeStory, length,
-  progressActiveColor, progressColor, progressContainerStyle,
+  progressActiveColor, progressColor, progressContainerStyle, progressPaddingHorizontal, progressGap
 } ) => {
 
   const width = ( (
-    WIDTH - ProgressStyles.container.left * 2 ) - ( length - 1 )
-    * ProgressStyles.container.gap ) / length;
+    WIDTH - (progressPaddingHorizontal ? progressPaddingHorizontal :ProgressStyles.container.left) * 2 ) - ( length - 1 )
+    * (progressGap ? progressGap :ProgressStyles.container.gap) ) / length;
 
   return (
     <View style={[ ProgressStyles.container, progressContainerStyle, { width: WIDTH } ]}>
