@@ -24,6 +24,7 @@ export interface InstagramStoryProps {
   renderAvatar?: () => ReactNode;
   renderStoryHeader?: () => ReactNode;
   name?: string;
+  seen?:boolean;
   stories: StoryItemProps[];
 }
 

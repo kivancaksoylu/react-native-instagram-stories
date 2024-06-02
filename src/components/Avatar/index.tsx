@@ -25,12 +25,13 @@ const StoryAvatar: FC<StoryAvatarProps> = ( {
   size,
   showName,
   nameTextStyle,
+  seen
 } ) => {
 
   const loaded = useSharedValue( false );
   const isLoading = useDerivedValue( () => loadingStory.value === id || !loaded.value );
   const loaderColor = useDerivedValue( () => (
-    seenStories.value[id] === stories[stories.length - 1]?.id
+    (seenStories.value[id] === stories[stories.length - 1]?.id) || seen
       ? seenColors
       : colors
   ) );
