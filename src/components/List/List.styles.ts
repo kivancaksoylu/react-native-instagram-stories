@@ -6,6 +6,7 @@ export default StyleSheet.create( {
     borderRadius: 8,
     overflow: 'hidden',
     width: WIDTH,
+    justifyContent:'center' //bu satır eklendi
   },
   content: {
     position: 'absolute',

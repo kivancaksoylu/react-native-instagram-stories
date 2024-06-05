@@ -34,7 +34,7 @@ const StoryList: FC<StoryListProps> = ( {
 
   const onImageLayout = ( height: number ) => {
 
-    imageHeight.value = height;
+    // imageHeight.value = height; //bu satır eklendi(yorum satırı yapıldı)
 
   };
 
