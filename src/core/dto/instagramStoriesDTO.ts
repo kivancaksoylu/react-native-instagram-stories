@@ -14,6 +14,7 @@ export interface StoryItemProps {
   source: ImageProps['source'];
   mediaType?: 'image' | 'video';
   animationDuration?: number;
+  seen?:boolean;
   renderContent?: () => ReactNode;
   renderFooter?: () => ReactNode;
 }
@@ -70,6 +71,7 @@ export interface InstagramStoriesProps {
   hideAvatarList?: boolean;
   imageOverlayView?: ReactNode;
   hideElementsOnLongPress?: boolean;
+  usePropSeen?:boolean;
   onShow?: ( id: string ) => void;
   onHide?: ( id: string ) => void;
   onSwipeUp?: ( userId?: string, storyId?: string ) => void;

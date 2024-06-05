@@ -16,7 +16,7 @@ const StoryList: FC<StoryListProps> = ( {
   id, stories, index, x, activeUser, activeStory, progress, seenStories, paused,
   onLoad, videoProps, progressColor, progressActiveColor, mediaContainerStyle, imageStyles,
   imageProps, progressContainerStyle, imageOverlayView, hideElements, videoDuration,
-  progressPaddingHorizontal,progressGap, ...props
+  progressPaddingHorizontal,progressGap,usePropSeen, ...props
 } ) => {
 
   const imageHeight = useSharedValue( HEIGHT );
@@ -38,9 +38,14 @@ const StoryList: FC<StoryListProps> = ( {
 
   };
 
-  const lastSeenIndex = stories.findIndex(
+  var lastSeenIndex = stories.findIndex(
     ( item ) => item.id === seenStories.value[id],
   );
+  if(usePropSeen){//bu satır eklendi
+    lastSeenIndex = stories.findIndex(story=>story.seen===false) -1 
+    if(lastSeenIndex===0)
+      lastSeenIndex=-1
+  }
 
   return (
     <StoryAnimation x={x} index={index}>

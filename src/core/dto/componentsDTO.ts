@@ -42,6 +42,7 @@ export interface StoryModalProps {
   imageStyles?: ImageStyle;
   imageProps?: ImageProps;
   hideElementsOnLongPress?: boolean;
+  usePropSeen?:boolean;
   onLoad: () => void;
   onShow?: ( id: string ) => void;
   onHide?: ( id: string ) => void;
@@ -151,6 +152,7 @@ export interface StoryListProps extends InstagramStoryProps, StoryHeaderProps {
   imageOverlayView?: ReactNode;
   hideElements: SharedValue<boolean>;
   videoDuration?: number;
+  usePropSeen?:boolean;
   onLoad: ( duration?: number ) => void;
 }
 

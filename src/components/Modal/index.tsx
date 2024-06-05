@@ -18,6 +18,7 @@ import ModalStyles from './Modal.styles';
 const StoryModal = forwardRef<StoryModalPublicMethods, StoryModalProps>( ( {
   stories, seenStories, duration, videoDuration, storyAvatarSize, textStyle, containerStyle,
   backgroundColor, videoProps, closeIconColor, modalAnimationDuration = STORY_ANIMATION_DURATION,
+  usePropSeen,
   storyAnimationDuration = STORY_ANIMATION_DURATION, hideElementsOnLongPress,
   onLoad, onShow, onHide,
   onSeenStoriesChange, onSwipeUp, onStoryStart, onStoryEnd, ...props
@@ -137,9 +138,16 @@ const StoryModal = forwardRef<StoryModalPublicMethods, StoryModalProps>( ( {
 
     }
 
-    const newStoryIndex = stories[newUserIndex]?.stories.findIndex(
+    var newStoryIndex = stories[newUserIndex]?.stories.findIndex(
       ( story ) => story.id === seenStories.value[id],
     );
+    if(usePropSeen){ //bu satır eklendi
+      newStoryIndex = stories[newUserIndex]?.stories.findIndex(story=>story.seen===false) 
+      if(newStoryIndex===0 || !newStoryIndex)
+        newStoryIndex=-1
+      else if(newStoryIndex)
+        newStoryIndex = newStoryIndex-1
+    }
     const userStories = stories[newUserIndex]?.stories;
     const newStory = newStoryIndex !== undefined
       ? userStories?.[newStoryIndex + 1]?.id ?? userStories?.[0]?.id : undefined;
@@ -459,6 +467,7 @@ const StoryModal = forwardRef<StoryModalPublicMethods, StoryModalProps>( ( {
                   progress={animation}
                   seenStories={seenStories}
                   onClose={onClose}
+                  usePropSeen={usePropSeen}
                   onLoad={( value ) => {
 
                     onLoad?.();

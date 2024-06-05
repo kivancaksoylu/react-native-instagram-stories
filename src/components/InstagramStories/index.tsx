@@ -34,6 +34,7 @@ const InstagramStories = forwardRef<InstagramStoriesPublicMethods, InstagramStor
   closeIconColor = CLOSE_COLOR,
   isVisible = false,
   hideAvatarList = false,
+  usePropSeen=false,
   ...props
 }, ref ) => {
 
@@ -255,6 +256,7 @@ const InstagramStories = forwardRef<InstagramStoriesPublicMethods, InstagramStor
         videoDuration={videoAnimationMaxDuration}
         videoProps={videoProps}
         closeIconColor={closeIconColor}
+        usePropSeen={usePropSeen}
         {...props}
       />
     </>
