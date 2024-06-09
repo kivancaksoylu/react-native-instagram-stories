@@ -8,7 +8,8 @@ import StoryImage from '../Image';
 import Progress from '../Progress';
 import StoryHeader from '../Header';
 import { StoryListProps } from '../../core/dto/componentsDTO';
-import { HEIGHT } from '../../core/constants';
+// import { HEIGHT } from '../../core/constants';
+import { SCREENHEIGHT } from '../../core/constants';
 import StoryContent from '../Content';
 import StoryFooter from '../Footer';
 
@@ -19,7 +20,7 @@ const StoryList: FC<StoryListProps> = ( {
   progressPaddingHorizontal,progressGap,usePropSeen, ...props
 } ) => {
 
-  const imageHeight = useSharedValue( HEIGHT );
+  const imageHeight = useSharedValue( SCREENHEIGHT ); 
   const isActive = useDerivedValue( () => activeUser.value === id );
 
   const activeStoryIndex = useDerivedValue(
@@ -34,7 +35,7 @@ const StoryList: FC<StoryListProps> = ( {
 
   const onImageLayout = ( height: number ) => {
 
-    // imageHeight.value = height; //bu satır eklendi(yorum satırı yapıldı)
+    // imageHeight.value = height
 
   };
 

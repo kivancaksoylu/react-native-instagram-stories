@@ -1,6 +1,7 @@
 import { Dimensions } from 'react-native';
 
 export const { width: WIDTH, height: HEIGHT } = Dimensions.get( 'window' );
+export const {height:SCREENHEIGHT} = Dimensions.get('screen'); //bu satır eklendi ,get full screen height for android
 
 export const STORAGE_KEY = '@birdwingo/react-native-instagram-stories';
 
