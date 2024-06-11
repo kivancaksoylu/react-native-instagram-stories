@@ -34,7 +34,8 @@ const StoryModal = forwardRef<StoryModalPublicMethods, StoryModalProps>( ( {
   const durationValue = useSharedValue( duration );
   const isLongPress = useSharedValue( false );
   const hideElements = useSharedValue( false );
-
+  const sharedStories = useSharedValue(stories);
+  sharedStories.value  =stories;
   const userIndex = useDerivedValue( () => Math.round( x.value / WIDTH ) );
   const storyIndex = useDerivedValue( () => stories[userIndex.value]?.stories.findIndex(
     ( story ) => story.id === currentStory.value,
@@ -138,22 +139,26 @@ const StoryModal = forwardRef<StoryModalPublicMethods, StoryModalProps>( ( {
 
     }
 
-    var newStoryIndex = stories[newUserIndex]?.stories.findIndex(
+
+    var newStoryIndex= undefined
+    var newStory=undefined
+    if (sharedStories.value?.[newUserIndex] !== undefined){
+    newStoryIndex = sharedStories.value[newUserIndex]?.stories.findIndex(
       ( story ) => story.id === seenStories.value[id],
     );
     if(usePropSeen){ //bu satır eklendi
-      newStoryIndex = stories[newUserIndex]?.stories.findIndex(story=>story.seen===false) 
+      newStoryIndex = sharedStories.value[newUserIndex]?.stories.findIndex(story=>story.seen===false) 
       if(newStoryIndex===0 || !newStoryIndex)
         newStoryIndex=-1
       else if(newStoryIndex)
         newStoryIndex = newStoryIndex-1
     }
-    const userStories = stories[newUserIndex]?.stories;
-    const newStory = newStoryIndex !== undefined
+    const userStories = sharedStories.value[newUserIndex]?.stories;
+     newStory = newStoryIndex !== undefined
       ? userStories?.[newStoryIndex + 1]?.id ?? userStories?.[0]?.id : undefined;
     if(newStory)
       currentStory.value=newStory
-
+}
     if ( onStoryStart ) {
 
       runOnJS( onStoryStart )( id, newStory );
