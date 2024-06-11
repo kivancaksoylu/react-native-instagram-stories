@@ -50,7 +50,7 @@ const StoryList: FC<StoryListProps> = ( {
 
   return (
     <StoryAnimation x={x} index={index}>
-      <Animated.View style={[ animatedStyles, ListStyles.container ]}>
+      <Animated.View style={[  ListStyles.container ]}>
         <StoryImage
           stories={stories}
           activeStory={activeStory}
